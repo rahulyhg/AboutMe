@@ -12,4 +12,7 @@
 
     <string name="tab_projects">PROJECTS</string>
     <string name="tab_blog">BLOG</string>
+    <string name="projects_activity">Projects Activity</string>
+    <string name="my_blog">My blog</string>
+    <string name="find_me_on_github">Find me on GitHub</string>
 </resources>

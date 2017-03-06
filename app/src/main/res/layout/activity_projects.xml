@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_about"
+    android:id="@+id/activity_projects"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.gmail.lusersks.aboutme.AboutActivity">
+    tools:context=".ProjectsActivity">
 
     <LinearLayout
         android:id="@+id/tabs_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/tab_about"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/tab_about"
+            android:textSize="18sp"
+            tools:ignore="ButtonStyle" />
 
         <Button
             android:id="@+id/tab_home"
@@ -19,16 +29,6 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/tab_home"
-            android:textSize="18sp"
-            tools:ignore="ButtonStyle" />
-
-        <Button
-            android:id="@+id/tab_projects"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/tab_projects"
             android:textSize="18sp"
             tools:ignore="ButtonStyle" />
 
@@ -45,11 +45,13 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/go_to_github"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="@string/about_activity"
+        android:onClick="goToGithub"
+        android:text="@string/find_me_on_github"
         android:textSize="30sp" />
 
 </LinearLayout>

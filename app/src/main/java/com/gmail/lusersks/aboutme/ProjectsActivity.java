@@ -1,19 +1,20 @@
 package com.gmail.lusersks.aboutme;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class ProjectsActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_projects);
 
         (findViewById(R.id.tab_about)).setOnClickListener(this);
-        (findViewById(R.id.tab_projects)).setOnClickListener(this);
+        (findViewById(R.id.tab_home)).setOnClickListener(this);
         (findViewById(R.id.tab_blog)).setOnClickListener(this);
     }
 
@@ -34,5 +35,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 newActivity = new Intent(this, MainActivity.class);
         }
         startActivity(newActivity);
+    }
+
+    public void goToGithub(View view) {
+        TextView textView = (TextView) findViewById(R.id.go_to_github);
+        textView.setText("romasks");
     }
 }

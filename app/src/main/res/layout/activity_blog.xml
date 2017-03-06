@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_about"
+    android:id="@+id/activity_blog"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.gmail.lusersks.aboutme.AboutActivity">
+    tools:context=".BlogActivity">
 
     <LinearLayout
         android:id="@+id/tabs_layout"
@@ -13,12 +13,13 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/tab_home"
+            android:id="@+id/tab_about"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/tab_home"
+            android:onClick=""
+            android:text="@string/tab_about"
             android:textSize="18sp"
             tools:ignore="ButtonStyle" />
 
@@ -33,12 +34,12 @@
             tools:ignore="ButtonStyle" />
 
         <Button
-            android:id="@+id/tab_blog"
+            android:id="@+id/tab_home"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/tab_blog"
+            android:text="@string/tab_home"
             android:textSize="18sp"
             tools:ignore="ButtonStyle" />
 
@@ -49,7 +50,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="@string/about_activity"
+        android:text="@string/my_blog"
         android:textSize="30sp" />
 
 </LinearLayout>
