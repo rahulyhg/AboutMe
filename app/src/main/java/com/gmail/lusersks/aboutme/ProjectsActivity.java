@@ -13,7 +13,7 @@ public class ProjectsActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_projects);
 
-        (findViewById(R.id.tab_about)).setOnClickListener(this);
+        (findViewById(R.id.tab_skills)).setOnClickListener(this);
         (findViewById(R.id.tab_home)).setOnClickListener(this);
         (findViewById(R.id.tab_blog)).setOnClickListener(this);
     }
@@ -22,8 +22,8 @@ public class ProjectsActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         Intent newActivity;
         switch (v.getId()) {
-            case R.id.tab_about:
-                newActivity = new Intent(this, AboutActivity.class);
+            case R.id.tab_skills:
+                newActivity = new Intent(this, SkillsActivity.class);
                 break;
             case R.id.tab_projects:
                 newActivity = new Intent(this, ProjectsActivity.class);

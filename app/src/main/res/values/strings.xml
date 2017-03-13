@@ -7,8 +7,8 @@
     <string name="job_role">SOFTWARE DEVELOPER and TESTER</string>
     <string name="my_gmail">lusersks@gmail.com</string>
 
-    <string name="tab_about">ABOUT</string>
-    <string name="about_activity">About Activity</string>
+    <string name="tab_skills">SKILLS</string>
+    <string name="skills_activity">Skills Activity</string>
 
     <string name="tab_projects">PROJECTS</string>
     <string name="tab_blog">BLOG</string>

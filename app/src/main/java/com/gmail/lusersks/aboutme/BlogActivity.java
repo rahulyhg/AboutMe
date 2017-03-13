@@ -12,7 +12,7 @@ public class BlogActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blog);
 
-        (findViewById(R.id.tab_about)).setOnClickListener(this);
+        (findViewById(R.id.tab_skills)).setOnClickListener(this);
         (findViewById(R.id.tab_projects)).setOnClickListener(this);
         (findViewById(R.id.tab_home)).setOnClickListener(this);
     }
@@ -21,8 +21,8 @@ public class BlogActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         Intent newActivity;
         switch (v.getId()) {
-            case R.id.tab_about:
-                newActivity = new Intent(this, AboutActivity.class);
+            case R.id.tab_skills:
+                newActivity = new Intent(this, SkillsActivity.class);
                 break;
             case R.id.tab_projects:
                 newActivity = new Intent(this, ProjectsActivity.class);

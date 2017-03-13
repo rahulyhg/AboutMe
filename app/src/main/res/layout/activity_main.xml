@@ -5,7 +5,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.gmail.lusersks.aboutme.MainActivity"
+    tools:context=".MainActivity"
     tools:ignore="ContentDescription">
 
     <LinearLayout
@@ -15,12 +15,12 @@
         android:layout_centerHorizontal="true" >
 
         <Button
-            android:id="@+id/tab_about"
+            android:id="@+id/tab_skills"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/tab_about"
+            android:text="@string/tab_skills"
             android:textSize="18sp"
             android:onClick=""
             tools:ignore="ButtonStyle" />
