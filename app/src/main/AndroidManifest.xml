@@ -19,7 +19,7 @@
         </activity>
         <activity android:name=".SkillsActivity" />
         <activity android:name=".ProjectsActivity" />
-        <activity android:name=".BlogActivity" />
+        <activity android:name=".ContactsActivity" />
     </application>
 
 </manifest>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".BlogActivity">
+    tools:context=".ContactsActivity">
 
     <LinearLayout
         android:id="@+id/tabs_layout"
@@ -50,7 +50,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="@string/my_blog"
+        android:text="@string/my_contacts"
         android:textSize="30sp" />
 
 </LinearLayout>

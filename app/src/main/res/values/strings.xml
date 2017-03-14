@@ -8,11 +8,13 @@
     <string name="my_gmail">lusersks@gmail.com</string>
 
     <string name="tab_skills">SKILLS</string>
-    <string name="skills_activity">Skills Activity</string>
-
     <string name="tab_projects">PROJECTS</string>
-    <string name="tab_blog">BLOG</string>
+    <string name="tab_contacts">CONTACTS</string>
+    <string name="tab_settings">SETTINGS</string>
+
+    <string name="skills_activity">Skills Activity</string>
     <string name="projects_activity">Projects Activity</string>
-    <string name="my_blog">My blog</string>
+    <string name="my_contacts">My contscts</string>
     <string name="find_me_on_github">Find me on GitHub</string>
+
 </resources>
