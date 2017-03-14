@@ -5,97 +5,127 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.gmail.lusersks.aboutme.MainActivity"
+    tools:context=".MainActivity"
     tools:ignore="ContentDescription">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/tabs_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hi there!"
-        android:id="@+id/hello_text" />
+        android:layout_centerHorizontal="true" >
+
+        <Button
+            android:id="@+id/tab_skills"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/tab_skills"
+            android:textSize="18sp"
+            android:onClick=""
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/tab_projects"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/tab_projects"
+            android:textSize="18sp"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/tab_contacts"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/tab_contacts"
+            android:textSize="18sp"
+            tools:ignore="ButtonStyle" />
+
+    </LinearLayout>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/avatar_2"
         android:id="@+id/img_avatar"
-        android:layout_below="@+id/hello_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tabs_layout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="30dp"
+        app:srcCompat="@drawable/avatar_2" />
 
     <TextView
-        android:text="@string/job_role"
+        android:id="@+id/job_role"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/img_avatar"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:id="@+id/job_role"
+        android:text="@string/job_role"
         android:textSize="18sp" />
 
     <TextView
-        android:text="@string/non_job_role"
+        android:id="@+id/non_job_role"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/job_role"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:id="@+id/non_job_role"
+        android:text="@string/non_job_role"
         android:textSize="18sp" />
 
-    <ImageView
+    <LinearLayout
+        android:id="@+id/social_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/twitter_50"
-        android:layout_marginLeft="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="35dp"
-        android:id="@+id/social_tw"
-        android:layout_below="@+id/non_job_role"
-        android:layout_alignLeft="@+id/img_avatar"
-        android:layout_alignStart="@+id/img_avatar" />
+        android:layout_below="@id/non_job_role"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/github_50"
-        android:id="@+id/social_gh"
-        android:layout_alignTop="@+id/social_in"
-        android:layout_toRightOf="@+id/non_job_role"
-        android:layout_toEndOf="@+id/non_job_role" />
+        <ImageView
+            android:id="@+id/social_tw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            app:srcCompat="@drawable/twitter_50" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/facebook_50"
-        android:id="@+id/social_fb"
-        android:layout_alignTop="@+id/social_tw"
-        android:layout_toLeftOf="@+id/non_job_role"
-        android:layout_toStartOf="@+id/non_job_role" />
+        <ImageView
+            android:id="@+id/social_gh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            app:srcCompat="@drawable/github_50" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/linkedin_50"
-        android:layout_marginRight="13dp"
-        android:layout_marginEnd="13dp"
-        android:id="@+id/social_in"
-        android:layout_alignTop="@+id/social_tw"
-        android:layout_alignRight="@+id/img_avatar"
-        android:layout_alignEnd="@+id/img_avatar" />
+        <ImageView
+            android:id="@+id/social_fb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            app:srcCompat="@drawable/facebook_50" />
+
+        <ImageView
+            android:id="@+id/social_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:srcCompat="@drawable/linkedin_50" />
+
+    </LinearLayout>
 
     <TextView
-        android:text="lusersks@gmail.com"
+        android:id="@+id/email_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="15dp"
-        android:id="@+id/email_text"
+        android:layout_marginBottom="20dp"
+        android:text="@string/my_gmail"
         android:textSize="18sp" />
 
 </RelativeLayout>
