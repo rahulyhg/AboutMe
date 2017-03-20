@@ -18,7 +18,7 @@ public class ContactsActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
-        Utilities.goToAnotherActivity(v.getId(), this);
+        Utilities.someAction(v.getId(), this);
     }
 
     @Override
@@ -29,7 +29,7 @@ public class ContactsActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Utilities.goToAnotherActivity(item.getItemId(), this);
+        Utilities.someAction(item.getItemId(), this);
         return super.onOptionsItemSelected(item);
     }
 }

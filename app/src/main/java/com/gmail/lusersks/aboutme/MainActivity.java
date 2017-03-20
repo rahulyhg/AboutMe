@@ -1,6 +1,5 @@
 package com.gmail.lusersks.aboutme;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -19,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        Utilities.goToAnotherActivity(v.getId(), this);
+        Utilities.someAction(v.getId(), this);
     }
 
     @Override
@@ -30,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Utilities.goToAnotherActivity(item.getItemId(), this);
+        Utilities.someAction(item.getItemId(), this);
         return super.onOptionsItemSelected(item);
     }
 }

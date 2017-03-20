@@ -15,7 +15,7 @@ public class Utilities {
         (activity.findViewById(R.id.tab_contacts)).setOnClickListener((View.OnClickListener) activity);
     }
 
-    public static void goToAnotherActivity(int id, Context activity) {
+    public static void someAction(int id, Context activity) {
         Class activityClass;
         String toast_text;
         switch (id) {
