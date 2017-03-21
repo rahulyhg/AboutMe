@@ -9,12 +9,18 @@ import android.widget.TextView;
 
 public class ProjectsActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private void initUI() {
+        (findViewById(R.id.tab_skills)).setOnClickListener(this);
+        (findViewById(R.id.tab_home)).setOnClickListener(this);
+        (findViewById(R.id.tab_contacts)).setOnClickListener(this);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_projects);
 
-        Utilities.initTabs(this);
+        initUI();
     }
 
     @Override

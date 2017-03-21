@@ -1,9 +1,15 @@
 package com.gmail.lusersks.aboutme;
 
+import android.widget.Toast;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 class SkillsData {
 
@@ -11,19 +17,58 @@ class SkillsData {
     static final String FIELD_EXPERIENCE = "experience";
     static final String FIELD_LEVEL = "level";
 
-    private static String[] skills = {"Android", "Java", "Ruby on Rails", "JavaScript", "HTML", "CSS"};
-    private static String[] experience_year = {"0.5", "1", "1", "1", "2", "2"};
-    private static String[] level_1to5 = {"1", "2", "2", "2", "3", "2"};
+    private static List<String> skills = new ArrayList<>();
+    private static List<String> experience_year = new ArrayList<>();
+    private static List<String> level_1to5 = new ArrayList<>();
 
-    static List<Map<String, String>> getItems() {
+    static List<Map<String, String>> getItems(SkillsActivity activity) {
+        getSkillsData(activity);
+
         final List<Map<String, String>> items = new ArrayList<>();
-        for (int i = 0; i < skills.length; i++) {
+        for (int i = 0; i < skills.size(); i++) {
             final Map<String, String> map = new HashMap<>(2);
-            map.put(FIELD_SKILL, skills[i]);
-            map.put(FIELD_EXPERIENCE, experience_year[i]);
-            map.put(FIELD_LEVEL, level_1to5[i]);
+
+            map.put(FIELD_SKILL, skills.get(i));
+            map.put(FIELD_EXPERIENCE, experience_year.get(i));
+            map.put(FIELD_LEVEL, level_1to5.get(i));
+
             items.add(map);
         }
         return items;
+    }
+
+    private static void getSkillsData(SkillsActivity activity) {
+        skills = Arrays.asList(activity
+                .getResources()
+                .getStringArray(R.array.skills_array)
+        );
+        experience_year = Arrays.asList(activity
+                .getResources()
+                .getStringArray(R.array.experience_year_array)
+        );
+        level_1to5 = Arrays.asList(activity
+                .getResources()
+                .getStringArray(R.array.level_1to5_array)
+        );
+    }
+
+    public static void addItem(String skill) {
+        skills.add(skill);
+        experience_year.add("1");
+        level_1to5.add("1");
+    }
+
+    public static void deleteItem(String item) {
+        int index = skills.indexOf(item);
+        skills.remove(index);
+        experience_year.remove(index);
+        level_1to5.remove(index);
+    }
+
+    public static void modifyItem(String item) {
+        int index = skills.indexOf(item);
+        skills.set(index, item);
+        experience_year.set(index, "1");
+        level_1to5.set(index, "1");
     }
 }

@@ -9,12 +9,6 @@ import android.widget.Toast;
 
 public class Utilities {
 
-    public static void initTabs(Activity activity) {
-        (activity.findViewById(R.id.tab_home)).setOnClickListener((View.OnClickListener) activity);
-        (activity.findViewById(R.id.tab_projects)).setOnClickListener((View.OnClickListener) activity);
-        (activity.findViewById(R.id.tab_contacts)).setOnClickListener((View.OnClickListener) activity);
-    }
-
     public static void someAction(int id, Context activity) {
         Class activityClass;
         String toast_text;

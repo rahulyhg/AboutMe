@@ -16,5 +16,8 @@
     <string name="projects_activity">Projects Activity</string>
     <string name="my_contacts">My contscts</string>
     <string name="find_me_on_github">Find me on GitHub</string>
+    <string name="dialog_skill_name">skill name (ex. Ruby)</string>
+    <string name="dialog_experience">experience in year</string>
+    <string name="dialog_level">level from 1 to 5</string>
 
 </resources>

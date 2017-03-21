@@ -8,12 +8,18 @@ import android.view.View;
 
 public class ContactsActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private void initUI() {
+        (findViewById(R.id.tab_skills)).setOnClickListener(this);
+        (findViewById(R.id.tab_projects)).setOnClickListener(this);
+        (findViewById(R.id.tab_home)).setOnClickListener(this);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts);
 
-        Utilities.initTabs(this);
+        initUI();
     }
 
     @Override
