@@ -1,27 +1,25 @@
-package com.gmail.lusersks.aboutme;
+package com.gmail.lusersks.aboutme.skills;
 
-import android.widget.Toast;
+import com.gmail.lusersks.aboutme.R;
+import com.gmail.lusersks.aboutme.SkillsActivity;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
-class SkillsData {
+public class SkillsData {
 
-    static final String FIELD_SKILL = "skills";
-    static final String FIELD_EXPERIENCE = "experience";
-    static final String FIELD_LEVEL = "level";
+    public static final String FIELD_SKILL = "skills";
+    public static final String FIELD_EXPERIENCE = "experience";
+    public static final String FIELD_LEVEL = "level";
 
     private static List<String> skills = new ArrayList<>();
     private static List<String> experience_year = new ArrayList<>();
     private static List<String> level_1to5 = new ArrayList<>();
 
-    static List<Map<String, String>> getItems(SkillsActivity activity) {
+    public static List<Map<String, String>> getItems(SkillsActivity activity) {
         getSkillsData(activity);
 
         final List<Map<String, String>> items = new ArrayList<>();

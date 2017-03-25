@@ -1,6 +1,5 @@
 package com.gmail.lusersks.aboutme;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.os.Bundle;
@@ -16,17 +15,27 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
-public class SkillsActivity extends AppCompatActivity
-        implements View.OnClickListener, DialogAddNewSkill.DialogAddNewSkillListener {
+import com.gmail.lusersks.aboutme.skills.AddNewDialog;
+import com.gmail.lusersks.aboutme.skills.DeleteDialog;
+import com.gmail.lusersks.aboutme.skills.DialogSkillsActionListener;
+import com.gmail.lusersks.aboutme.skills.EditDialog;
+import com.gmail.lusersks.aboutme.skills.SkillsData;
 
-    private DialogFragment dialogAddNewSkill;
+public class SkillsActivity extends AppCompatActivity
+        implements View.OnClickListener, DialogSkillsActionListener {
+
+    private DialogFragment addNewSkillDialog;
+    private DialogFragment deleteSkillDialog;
+    private DialogFragment editSkillDialog;
 
     private void initUI() {
         (findViewById(R.id.tab_home)).setOnClickListener(this);
         (findViewById(R.id.tab_projects)).setOnClickListener(this);
         (findViewById(R.id.tab_contacts)).setOnClickListener(this);
 
-        dialogAddNewSkill = new DialogAddNewSkill();
+        addNewSkillDialog = new AddNewDialog();
+        deleteSkillDialog = new DeleteDialog();
+        editSkillDialog = new EditDialog();
     }
 
     @Override
@@ -60,15 +69,15 @@ public class SkillsActivity extends AppCompatActivity
         switch (item.getItemId()) {
             case R.id.add_new_skill:
                 Toast.makeText(this, "Add new skill", Toast.LENGTH_LONG).show();
-                dialogAddNewSkill.show(getFragmentManager(), "dialogAddNewSkill");
+                addNewSkillDialog.show(getFragmentManager(), "addNewSkillDialog");
                 return true;
             case R.id.edit_skill:
                 Toast.makeText(this, "Edit skill", Toast.LENGTH_LONG).show();
-                // show dialog for modify skill
+                editSkillDialog.show(getFragmentManager(), "editSkillDialog");
                 return true;
             case R.id.delete_skill:
                 Toast.makeText(this, "Delete skill", Toast.LENGTH_LONG).show();
-                // show acceptance dialog for remove skill
+                deleteSkillDialog.show(getFragmentManager(), "deleteSkillDialog");
                 return true;
             default:
                 return super.onContextItemSelected(item);
@@ -94,11 +103,19 @@ public class SkillsActivity extends AppCompatActivity
 
     @Override
     public void onDialogPositiveClick(DialogFragment dialog) {
-        Dialog dialogView = dialog.getDialog();
-        EditText editText = (EditText) dialogView.findViewById(R.id.dialog_new_skill);
-        String skill = editText.getText().toString();
+        if (dialog instanceof AddNewDialog) {
+            Dialog dialogView = dialog.getDialog();
+            EditText editText = (EditText) dialogView.findViewById(R.id.dialog_new_skill);
+            String skill = editText.getText().toString();
 
-        Toast.makeText(this, skill, Toast.LENGTH_LONG).show();
-        //SkillsData.addItem(skill);
+            Toast.makeText(this, skill, Toast.LENGTH_LONG).show();
+            //SkillsData.addItem(skill);
+        } else if (dialog instanceof DeleteDialog) {
+            Toast.makeText(this, "Delete skill", Toast.LENGTH_LONG).show();
+        } else if (dialog instanceof EditDialog) {
+            Toast.makeText(this, "Edit skill", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, "Something wrong", Toast.LENGTH_LONG).show();
+        }
     }
 }
