@@ -1,5 +1,10 @@
 package com.gmail.lusersks.aboutme.skills;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+
 import com.gmail.lusersks.aboutme.R;
 import com.gmail.lusersks.aboutme.SkillsActivity;
 
@@ -11,62 +16,100 @@ import java.util.Map;
 
 public class SkillsData {
 
-    public static final String FIELD_SKILL = "skills";
-    public static final String FIELD_EXPERIENCE = "experience";
+    public static final String FIELD_SKILL = "skill";
+    public static final String FIELD_YEARS = "years";
     public static final String FIELD_LEVEL = "level";
 
-    private static List<String> skills = new ArrayList<>();
-    private static List<String> experience_year = new ArrayList<>();
-    private static List<String> level_1to5 = new ArrayList<>();
+    private static String[] skill = {"Android", "Java", "Ruby on Rails", "JavaScript", "HTML", "CSS"};
+    private static String[] years = {"1", "1", "1", "1", "2", "2"};
+    private static String[] level = {"1", "2", "2", "2", "3", "2"};
 
     public static List<Map<String, String>> getItems(SkillsActivity activity) {
-        getSkillsData(activity);
 
-        final List<Map<String, String>> items = new ArrayList<>();
-        for (int i = 0; i < skills.size(); i++) {
-            final Map<String, String> map = new HashMap<>(2);
+        DBHelper dbHelper = new DBHelper(activity);
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
 
-            map.put(FIELD_SKILL, skills.get(i));
-            map.put(FIELD_EXPERIENCE, experience_year.get(i));
-            map.put(FIELD_LEVEL, level_1to5.get(i));
+        Cursor cursor = database.query(DBHelper.TABLE_SKILLS, null, null, null, null, null, null);
+        if (!cursor.moveToFirst()) initDB(database);
 
-            items.add(map);
-        }
+        List<Map<String, String>> items = new ArrayList<>();
+        fillListOfItems(cursor, items);
+
+        cursor.close();
+
         return items;
     }
 
-    private static void getSkillsData(SkillsActivity activity) {
-        skills = Arrays.asList(activity
-                .getResources()
-                .getStringArray(R.array.skills_array)
-        );
-        experience_year = Arrays.asList(activity
-                .getResources()
-                .getStringArray(R.array.experience_year_array)
-        );
-        level_1to5 = Arrays.asList(activity
-                .getResources()
-                .getStringArray(R.array.level_1to5_array)
-        );
+    private static void fillListOfItems(Cursor cursor, List<Map<String, String>> items) {
+
+        int idIndex = cursor.getColumnIndex(DBHelper.KEY_ID);
+        int skillIndex = cursor.getColumnIndex(FIELD_SKILL);
+        int yearsIndex = cursor.getColumnIndex(FIELD_YEARS);
+        int levelIndex = cursor.getColumnIndex(FIELD_LEVEL);
+        do {
+            Map<String, String> map = new HashMap<>(2);
+
+            Log.d("mLog", "ID = " + cursor.getInt(idIndex)
+                    + ", skill = " + cursor.getString(skillIndex)
+                    + ", years = " + cursor.getString(yearsIndex)
+                    + ", level = " + cursor.getString(levelIndex));
+
+            map.put(FIELD_SKILL, cursor.getString(skillIndex));
+            map.put(FIELD_YEARS, cursor.getString(yearsIndex));
+            map.put(FIELD_LEVEL, cursor.getString(levelIndex));
+
+            items.add(map);
+        } while (cursor.moveToNext());
     }
 
-    public static void addItem(String skill) {
-        skills.add(skill);
-        experience_year.add("1");
-        level_1to5.add("1");
+    private static void initDB(SQLiteDatabase database) {
+
+        final int NUMBER_OF_SKILLS = 6;
+        ContentValues contentValues = new ContentValues();
+
+        database.delete(DBHelper.TABLE_SKILLS, null, null);
+
+        for (int i = 0; i < NUMBER_OF_SKILLS; i++) {
+            contentValues.put(FIELD_SKILL, skill[i]);
+            contentValues.put(FIELD_YEARS, Integer.parseInt(years[i]));
+            contentValues.put(FIELD_LEVEL, Integer.parseInt(level[i]));
+
+            /*Log.d("mLog", "ID = ?"
+                    + ", skill = " + contentValues.get(FIELD_SKILL)
+                    + ", years = " + contentValues.get(FIELD_YEARS)
+                    + ", level = " + contentValues.get(FIELD_LEVEL));*/
+
+            database.insert(DBHelper.TABLE_SKILLS, null, contentValues);
+        }
     }
 
-    public static void deleteItem(String item) {
-        int index = skills.indexOf(item);
-        skills.remove(index);
-        experience_year.remove(index);
-        level_1to5.remove(index);
+    public static void addItem(SkillsActivity activity, String skill, String years, String level) {
+
+        DBHelper dbHelper = new DBHelper(activity);
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(FIELD_SKILL, skill);
+        contentValues.put(FIELD_YEARS, Integer.parseInt(years));
+        contentValues.put(FIELD_LEVEL, Integer.parseInt(level));
+
+        database.insert(DBHelper.TABLE_SKILLS, null, contentValues);
+    }
+
+    public static void deleteItem(SkillsActivity activity, String skill) {
+
+        DBHelper dbHelper = new DBHelper(activity);
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
+
+        database.delete(DBHelper.TABLE_SKILLS, FIELD_SKILL + " == " + skill, null);
     }
 
     public static void modifyItem(String item) {
-        int index = skills.indexOf(item);
-        skills.set(index, item);
-        experience_year.set(index, "1");
-        level_1to5.set(index, "1");
+        // TODO: edit item
+    }
+
+    public static void clearItems() {
+        // TODO; clear items
     }
 }

@@ -48,8 +48,8 @@ public class SkillsActivity extends AppCompatActivity
         ListAdapter mAdapter = new SimpleAdapter(this,
                 SkillsData.getItems(this),
                 R.layout.activity_listview,
-                new String[]{SkillsData.FIELD_SKILL, SkillsData.FIELD_EXPERIENCE, SkillsData.FIELD_LEVEL},
-                new int[]{R.id.skill, R.id.experience, R.id.level});
+                new String[]{SkillsData.FIELD_SKILL, SkillsData.FIELD_YEARS, SkillsData.FIELD_LEVEL},
+                new int[]{R.id.tvSkill, R.id.tvYears, R.id.tvLevel});
         ListView mList = (ListView) findViewById(R.id.list_skills);
         mList.setAdapter(mAdapter);
 
@@ -65,20 +65,24 @@ public class SkillsActivity extends AppCompatActivity
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-//        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+
         switch (item.getItemId()) {
+
             case R.id.add_new_skill:
-                Toast.makeText(this, "Add new skill", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Add new skill", Toast.LENGTH_SHORT).show();
                 addNewSkillDialog.show(getFragmentManager(), "addNewSkillDialog");
                 return true;
+
             case R.id.edit_skill:
-                Toast.makeText(this, "Edit skill", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Edit skill", Toast.LENGTH_SHORT).show();
                 editSkillDialog.show(getFragmentManager(), "editSkillDialog");
                 return true;
+
             case R.id.delete_skill:
-                Toast.makeText(this, "Delete skill", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Delete skill", Toast.LENGTH_SHORT).show();
                 deleteSkillDialog.show(getFragmentManager(), "deleteSkillDialog");
                 return true;
+
             default:
                 return super.onContextItemSelected(item);
         }
@@ -103,19 +107,32 @@ public class SkillsActivity extends AppCompatActivity
 
     @Override
     public void onDialogPositiveClick(DialogFragment dialog) {
+
         if (dialog instanceof AddNewDialog) {
             Dialog dialogView = dialog.getDialog();
-            EditText editText = (EditText) dialogView.findViewById(R.id.dialog_new_skill);
-            String skill = editText.getText().toString();
 
-            Toast.makeText(this, skill, Toast.LENGTH_LONG).show();
-            //SkillsData.addItem(skill);
+            EditText etSkill = (EditText) dialogView.findViewById(R.id.etSkill);
+            EditText etYears = (EditText) dialogView.findViewById(R.id.etYears);
+            EditText etLevel = (EditText) dialogView.findViewById(R.id.etLevel);
+
+            String skill = etSkill.getText().toString();
+            String years = etYears.getText().toString();
+            String level = etLevel.getText().toString();
+
+            SkillsData.addItem(this, skill, years, level);
+
         } else if (dialog instanceof DeleteDialog) {
-            Toast.makeText(this, "Delete skill", Toast.LENGTH_LONG).show();
+
+            Dialog dialogView = dialog.getDialog();
+            // TODO: delete Item
+
+            //SkillsData.deleteItem(this, skill);
+
         } else if (dialog instanceof EditDialog) {
-            Toast.makeText(this, "Edit skill", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Edit skill", Toast.LENGTH_SHORT).show();
+
         } else {
-            Toast.makeText(this, "Something wrong", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Something wrong", Toast.LENGTH_SHORT).show();
         }
     }
 }
