@@ -1,5 +1,7 @@
 package com.gmail.lusersks.aboutme;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -37,5 +39,21 @@ public class ContactsActivity extends AppCompatActivity implements View.OnClickL
     public boolean onOptionsItemSelected(MenuItem item) {
         Utilities.someAction(item.getItemId(), this);
         return super.onOptionsItemSelected(item);
+    }
+
+    public void goToTwitter(View view) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/romasks"));
+        startActivity(intent);
+    }
+
+    public void sendSMS(View view) {
+        String message = "My CV\n"
+                + "Raman Skaskevich\n"
+                + "Software Developer and Tester";
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, message);
+        startActivity(intent);
     }
 }

@@ -14,7 +14,7 @@
 
     <string name="skills_activity">Skills</string>
     <string name="projects_activity">Projects Activity</string>
-    <string name="my_contacts">My contscts</string>
+    <string name="my_contacts">My contacts</string>
     <string name="find_me_on_github">Find me on GitHub</string>
 
     <string name="etSkill">Skill (ex. Ruby)</string>
