@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="skills_array">
+        <item>Android</item>
+        <item>Java</item>
+        <item>Ruby on Rails</item>
+        <item>JavaScript</item>
+        <item>HTML</item>
+        <item>CSS</item>
+    </string-array>
+
+    <string-array name="experience_year_array">
+        <item>0.5</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>2</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="level_1to5_array">
+        <item>1</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>3</item>
+        <item>2</item>
+    </string-array>
+
+</resources>

@@ -7,28 +7,28 @@
         android:icon="@drawable/ic_home_white_36dp"
         android:orderInCategory="1"
         android:title="@string/tab_home"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/tab_skills"
         android:icon="@drawable/ic_view_list_white_36dp"
         android:orderInCategory="2"
         android:title="@string/tab_skills"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/tab_projects"
         android:icon="@drawable/ic_extension_white_36dp"
         android:orderInCategory="3"
         android:title="@string/tab_projects"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/tab_contacts"
         android:icon="@drawable/ic_assignment_ind_white_36dp"
         android:orderInCategory="4"
         android:title="@string/tab_contacts"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/tab_settings"

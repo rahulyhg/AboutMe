@@ -12,9 +12,16 @@
     <string name="tab_contacts">CONTACTS</string>
     <string name="tab_settings">SETTINGS</string>
 
-    <string name="skills_activity">Skills Activity</string>
+    <string name="skills_activity">Skills</string>
     <string name="projects_activity">Projects Activity</string>
-    <string name="my_contacts">My contscts</string>
+    <string name="my_contacts">My contacts</string>
     <string name="find_me_on_github">Find me on GitHub</string>
+
+    <string name="etSkill">Skill (ex. Ruby)</string>
+    <string name="etYears">Years (int)</string>
+    <string name="etLevel">Level (1 to 5)</string>
+    <string name="tvSkill">Skill text</string>
+    <string name="tvYears">1</string>
+    <string name="tvLevel">2</string>
 
 </resources>
