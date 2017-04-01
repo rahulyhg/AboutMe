@@ -41,8 +41,23 @@ public class ContactsActivity extends AppCompatActivity implements View.OnClickL
         return super.onOptionsItemSelected(item);
     }
 
-    public void goToTwitter(View view) {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/romasks"));
+    public void goToSocialMedia(View view) {
+        Uri uri = null;
+        switch (view.getId()) {
+            case R.id.social_tw:
+                uri = Uri.parse("https://twitter.com/romasks");
+                break;
+            case R.id.social_gh:
+                uri = Uri.parse("https://github.com/romasks");
+                break;
+            case R.id.social_fb:
+                uri = Uri.parse("https://facebook.com/romasks");
+                break;
+            case R.id.social_in:
+                uri = Uri.parse("https://linkedin.com/romasks");
+                break;
+        }
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
     }
 

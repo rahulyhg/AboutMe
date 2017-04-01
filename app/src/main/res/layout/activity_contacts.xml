@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_blog"
     android:layout_width="match_parent"
@@ -45,26 +46,107 @@
 
     </LinearLayout>
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="@string/my_contacts"
-        android:textSize="30sp" />
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/contacts_twitter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="My Twitter"
-        android:onClick="goToTwitter"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/find_me_on"
+            android:textSize="30sp" />
 
-    <Button
-        android:id="@+id/contacts_sms"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Send CV by SMS"
-        android:onClick="sendSMS"/>
+        <LinearLayout
+            android:id="@+id/social_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/social_tw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:onClick="goToSocialMedia"
+                app:srcCompat="@drawable/twitter_50" />
+
+            <ImageView
+                android:id="@+id/social_gh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:onClick="goToSocialMedia"
+                app:srcCompat="@drawable/github_50" />
+
+            <ImageView
+                android:id="@+id/social_fb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:onClick="goToSocialMedia"
+                app:srcCompat="@drawable/facebook_50" />
+
+            <ImageView
+                android:id="@+id/social_in"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:onClick="goToSocialMedia"
+                app:srcCompat="@drawable/linkedin_50" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="@string/send_me_mail"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/email_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/my_gmail"
+            android:textSize="26sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_weight="1"
+                android:text="@string/send_cv_by_sms"
+                android:textSize="30sp" />
+
+            <Button
+                android:id="@+id/contacts_sms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:onClick="sendSMS"
+                android:text="@string/send"
+                android:textSize="26sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
