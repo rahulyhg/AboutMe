@@ -2,14 +2,15 @@ package com.gmail.lusersks.aboutme.view;
 
 import android.support.annotation.NonNull;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
 import com.gmail.lusersks.aboutme.R;
-import com.gmail.lusersks.aboutme.model.InfoModel;
 import com.gmail.lusersks.aboutme.model.InfoModelImpl;
 import com.gmail.lusersks.aboutme.presenter.InfoPresenter;
 import com.gmail.lusersks.aboutme.presenter.InfoPresenterImpl;
@@ -20,25 +21,26 @@ import com.hannesdorfmann.mosby.mvp.viewstate.lce.data.RetainingLceViewState;
 
 import java.util.List;
 
-public class InfoActivity extends MvpLceViewStateActivity<TextView, List<String>, InfoView, InfoPresenter>
+public class InfoActivity extends MvpLceViewStateActivity<RecyclerView, List<String>, InfoView, InfoPresenter>
         implements InfoView, View.OnClickListener {
 
-    private TextView tvPersonName;
-    private TextView tvJobRole;
-    private TextView tvNonJobRole;
+    private RecyclerView recyclerView;
+    private InfoAdapter recyclerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        initUI();
+        initRecyclerView();
     }
 
-    private void initUI() {
-        tvPersonName = (TextView) findViewById(R.id.contentView);
-        tvJobRole = (TextView) findViewById(R.id.job_role);
-        tvNonJobRole = (TextView) findViewById(R.id.non_job_role);
+    private void initRecyclerView() {
+        recyclerView = (RecyclerView) findViewById(R.id.contentView);
+        recyclerAdapter = new InfoAdapter();
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(recyclerAdapter);
     }
 
     @Override
@@ -72,9 +74,7 @@ public class InfoActivity extends MvpLceViewStateActivity<TextView, List<String>
 
     @Override
     public void setData(List<String> data) {
-        tvPersonName.setText(data.get(0));
-        tvJobRole.setText(data.get(1));
-        tvNonJobRole.setText(data.get(2));
+        recyclerAdapter.addData(data);
     }
 
     @Override
