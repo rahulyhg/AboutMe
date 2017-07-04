@@ -1,6 +1,6 @@
 package com.gmail.lusersks.aboutme.view;
 
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.NonNull;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -14,10 +14,13 @@ import com.gmail.lusersks.aboutme.model.InfoModelImpl;
 import com.gmail.lusersks.aboutme.presenter.InfoPresenter;
 import com.gmail.lusersks.aboutme.presenter.InfoPresenterImpl;
 import com.gmail.lusersks.aboutme.presenter.Utilities;
+import com.hannesdorfmann.mosby.mvp.viewstate.lce.LceViewState;
+import com.hannesdorfmann.mosby.mvp.viewstate.lce.MvpLceViewStateActivity;
+import com.hannesdorfmann.mosby.mvp.viewstate.lce.data.RetainingLceViewState;
 
 import java.util.List;
 
-public class InfoActivity extends AppCompatActivity
+public class InfoActivity extends MvpLceViewStateActivity<TextView, List<String>, InfoView, InfoPresenter>
         implements InfoView, View.OnClickListener {
 
     private TextView tvPersonName;
@@ -30,14 +33,10 @@ public class InfoActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         initUI();
-
-        InfoModel model = new InfoModelImpl();
-        InfoPresenter presenter = new InfoPresenterImpl(model, this);
-        presenter.loadInformation();
     }
 
     private void initUI() {
-        tvPersonName = (TextView) findViewById(R.id.person_name);
+        tvPersonName = (TextView) findViewById(R.id.contentView);
         tvJobRole = (TextView) findViewById(R.id.job_role);
         tvNonJobRole = (TextView) findViewById(R.id.non_job_role);
     }
@@ -46,6 +45,12 @@ public class InfoActivity extends AppCompatActivity
     protected void onStop() {
         super.onStop();
         Log.d("APP", "Something wrong");
+    }
+
+    @NonNull
+    @Override
+    public InfoPresenter createPresenter() {
+        return new InfoPresenterImpl(new InfoModelImpl());
     }
 
     @Override
@@ -65,14 +70,31 @@ public class InfoActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
     public void setData(List<String> data) {
-        Log.d("APP", "view.setData()");
-        Log.d("APP", String.valueOf(data.size()));
-        for (int i = 0; i < data.size(); i++) {
-            Log.d("APP", data.get(i));
-        }
         tvPersonName.setText(data.get(0));
         tvJobRole.setText(data.get(1));
         tvNonJobRole.setText(data.get(2));
+    }
+
+    @Override
+    public void loadData(boolean pullToRefresh) {
+        getPresenter().loadInformation();
+    }
+
+    @NonNull
+    @Override
+    public LceViewState<List<String>, InfoView> createViewState() {
+        return new RetainingLceViewState<>();
+    }
+
+    @Override
+    public List<String> getData() {
+        return null;
+    }
+
+    @Override
+    protected String getErrorMessage(Throwable e, boolean pullToRefresh) {
+        return null;
     }
 }

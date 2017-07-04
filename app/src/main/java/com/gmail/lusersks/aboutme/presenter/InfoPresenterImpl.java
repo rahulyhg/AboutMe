@@ -1,25 +1,23 @@
 package com.gmail.lusersks.aboutme.presenter;
 
-import android.util.Log;
-
 import com.gmail.lusersks.aboutme.model.InfoModel;
 import com.gmail.lusersks.aboutme.view.InfoView;
+import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
 
-import java.util.List;
-
-public class InfoPresenterImpl implements InfoPresenter {
+public class InfoPresenterImpl extends MvpBasePresenter<InfoView> implements InfoPresenter {
 
     private final InfoModel model;
-    private final InfoView view;
 
-    public InfoPresenterImpl(InfoModel model, InfoView view) {
+    public InfoPresenterImpl(InfoModel model) {
         this.model = model;
-        this.view = view;
     }
 
     @Override
     public void loadInformation() {
-        Log.d("APP", "presenter.loadInformation()");
-        view.setData(model.retrieveInfo());
+        getView().showLoading(false);
+        if (isViewAttached()) {
+            getView().setData(model.retrieveInfo());
+            getView().showContent();
+        }
     }
 }

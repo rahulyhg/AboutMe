@@ -10,6 +10,14 @@
     tools:context=".view.InfoActivity"
     tools:ignore="ContentDescription">
 
+    <ProgressBar
+        android:id="@id/loadingView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:indeterminate="false"
+        android:visibility="gone"/>
+
     <ImageView
         android:id="@+id/img_avatar"
         android:layout_width="match_parent"
@@ -19,7 +27,7 @@
         app:srcCompat="@drawable/avatar_2"/>
 
     <TextView
-        android:id="@+id/person_name"
+        android:id="@id/contentView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -44,5 +52,10 @@
         android:gravity="center_horizontal"
         android:textSize="18sp"
         tools:text="RUBY and JAVA AMATEUR"/>
+
+    <TextView
+        android:id="@id/errorView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

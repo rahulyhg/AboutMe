@@ -1,8 +1,8 @@
 package com.gmail.lusersks.aboutme.presenter;
 
+import com.gmail.lusersks.aboutme.view.InfoView;
+import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 
-import java.util.List;
-
-public interface InfoPresenter {
+public interface InfoPresenter extends MvpPresenter<InfoView> {
     void loadInformation();
 }
