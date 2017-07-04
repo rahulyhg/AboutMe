@@ -1,4 +1,4 @@
-package com.gmail.lusersks.aboutme.skills;
+package com.gmail.lusersks.aboutme.view.dialog;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 
 import com.gmail.lusersks.aboutme.R;
 
-public class AddNewDialog extends SkillsActionsDialog {
+public class EditDialog extends SkillsActionsDialog {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -16,10 +16,10 @@ public class AddNewDialog extends SkillsActionsDialog {
         LayoutInflater inflater = getActivity().getLayoutInflater();
 
         builder.setView(inflater.inflate(R.layout.dialog_skills_add_edit, null))
-                .setPositiveButton("ADD NEW", new DialogInterface.OnClickListener() {
+                .setPositiveButton("EDIT", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        mListener.onDialogPositiveClick(AddNewDialog.this);
+                        mListener.onDialogPositiveClick(EditDialog.this);
                     }
                 })
                 .setNegativeButton("DISCARD", new DialogInterface.OnClickListener() {

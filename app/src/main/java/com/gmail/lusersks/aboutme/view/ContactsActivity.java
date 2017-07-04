@@ -1,4 +1,4 @@
-package com.gmail.lusersks.aboutme;
+package com.gmail.lusersks.aboutme.view;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -7,6 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.gmail.lusersks.aboutme.R;
+import com.gmail.lusersks.aboutme.presenter.Utilities;
 
 public class ContactsActivity extends AppCompatActivity implements View.OnClickListener {
 

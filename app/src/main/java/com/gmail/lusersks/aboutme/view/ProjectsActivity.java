@@ -1,4 +1,4 @@
-package com.gmail.lusersks.aboutme;
+package com.gmail.lusersks.aboutme.view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
+import com.gmail.lusersks.aboutme.R;
+import com.gmail.lusersks.aboutme.presenter.Utilities;
 
 public class ProjectsActivity extends AppCompatActivity implements View.OnClickListener {
 

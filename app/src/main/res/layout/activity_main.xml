@@ -1,79 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    android:orientation="vertical"
+    tools:context=".view.InfoActivity"
     tools:ignore="ContentDescription">
-
-    <LinearLayout
-        android:id="@+id/tabs_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true" >
-
-        <Button
-            android:id="@+id/tab_skills"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/tab_skills"
-            android:textSize="18sp"
-            android:onClick=""
-            tools:ignore="ButtonStyle" />
-
-        <Button
-            android:id="@+id/tab_projects"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/tab_projects"
-            android:textSize="18sp"
-            tools:ignore="ButtonStyle" />
-
-        <Button
-            android:id="@+id/tab_contacts"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/tab_contacts"
-            android:textSize="18sp"
-            tools:ignore="ButtonStyle" />
-
-    </LinearLayout>
 
     <ImageView
         android:id="@+id/img_avatar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tabs_layout"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        app:srcCompat="@drawable/avatar_2" />
+        android:gravity="center_horizontal"
+        app:srcCompat="@drawable/avatar_2"/>
+
+    <TextView
+        android:id="@+id/person_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:textSize="18sp"
+        tools:text="RAMAN SKASKEVICH"/>
 
     <TextView
         android:id="@+id/job_role"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/img_avatar"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:text="@string/job_role"
-        android:textSize="18sp" />
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:textSize="18sp"
+        tools:text="SOFTWARE DEVELOPER and TESTER"/>
 
     <TextView
         android:id="@+id/non_job_role"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/job_role"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="@string/non_job_role"
-        android:textSize="18sp" />
+        android:gravity="center_horizontal"
+        android:textSize="18sp"
+        tools:text="RUBY and JAVA AMATEUR"/>
 
-</RelativeLayout>
+</LinearLayout>

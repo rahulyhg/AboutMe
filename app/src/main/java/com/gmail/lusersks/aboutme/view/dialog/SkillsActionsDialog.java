@@ -1,4 +1,4 @@
-package com.gmail.lusersks.aboutme.skills;
+package com.gmail.lusersks.aboutme.view.dialog;
 
 
 import android.app.Activity;

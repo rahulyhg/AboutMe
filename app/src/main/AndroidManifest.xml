@@ -10,16 +10,15 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".view.InfoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SkillsActivity" />
-        <activity android:name=".ProjectsActivity" />
-        <activity android:name=".ContactsActivity" />
+        <activity android:name=".view.SkillsActivity" />
+        <activity android:name=".view.ProjectsActivity" />
+        <activity android:name=".view.ContactsActivity" />
     </application>
 
 </manifest>

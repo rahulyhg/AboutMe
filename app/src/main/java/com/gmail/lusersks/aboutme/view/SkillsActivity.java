@@ -1,4 +1,4 @@
-package com.gmail.lusersks.aboutme;
+package com.gmail.lusersks.aboutme.view;
 
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -15,11 +15,13 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
-import com.gmail.lusersks.aboutme.skills.AddNewDialog;
-import com.gmail.lusersks.aboutme.skills.DeleteDialog;
-import com.gmail.lusersks.aboutme.skills.DialogSkillsActionListener;
-import com.gmail.lusersks.aboutme.skills.EditDialog;
-import com.gmail.lusersks.aboutme.skills.SkillsData;
+import com.gmail.lusersks.aboutme.R;
+import com.gmail.lusersks.aboutme.presenter.Utilities;
+import com.gmail.lusersks.aboutme.view.dialog.AddNewDialog;
+import com.gmail.lusersks.aboutme.view.dialog.DeleteDialog;
+import com.gmail.lusersks.aboutme.view.dialog.DialogSkillsActionListener;
+import com.gmail.lusersks.aboutme.view.dialog.EditDialog;
+import com.gmail.lusersks.aboutme.model.SkillsData;
 
 public class SkillsActivity extends AppCompatActivity
         implements View.OnClickListener, DialogSkillsActionListener {

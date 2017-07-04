@@ -1,15 +1,13 @@
-package com.gmail.lusersks.aboutme.skills;
+package com.gmail.lusersks.aboutme.model;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.gmail.lusersks.aboutme.R;
-import com.gmail.lusersks.aboutme.SkillsActivity;
+import com.gmail.lusersks.aboutme.view.SkillsActivity;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
