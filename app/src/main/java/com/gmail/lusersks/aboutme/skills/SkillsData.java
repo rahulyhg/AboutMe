@@ -47,7 +47,7 @@ public class SkillsData {
         int yearsIndex = cursor.getColumnIndex(FIELD_YEARS);
         int levelIndex = cursor.getColumnIndex(FIELD_LEVEL);
         do {
-            Map<String, String> map = new HashMap<>(2);
+            Map<String, String> map = new HashMap<>(3);
 
             Log.d("mLog", "ID = " + cursor.getInt(idIndex)
                     + ", skill = " + cursor.getString(skillIndex)

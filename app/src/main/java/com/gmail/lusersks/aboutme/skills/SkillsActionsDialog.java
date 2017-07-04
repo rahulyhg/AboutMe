@@ -4,7 +4,7 @@ package com.gmail.lusersks.aboutme.skills;
 import android.app.Activity;
 import android.app.DialogFragment;
 
-class SkillsActionsDialog extends DialogFragment {
+public class SkillsActionsDialog extends DialogFragment {
     DialogSkillsActionListener mListener;
 
     @Override
