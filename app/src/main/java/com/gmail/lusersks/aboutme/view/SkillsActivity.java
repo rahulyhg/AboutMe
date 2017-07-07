@@ -152,13 +152,11 @@ public class SkillsActivity extends MvpLceViewStateActivity<RecyclerView, List<S
 
     @Override
     public void setData(List<Skill> data) {
-        Log.d("APP", "view.setData");
         recyclerAdapter.setData(data);
     }
 
     @Override
     public void loadData(boolean pullToRefresh) {
-        Log.d("APP", "view.loadData");
         getPresenter().loadSkills();
     }
 

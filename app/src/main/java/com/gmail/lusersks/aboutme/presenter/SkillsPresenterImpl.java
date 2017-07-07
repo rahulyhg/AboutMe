@@ -16,7 +16,6 @@ public class SkillsPresenterImpl extends MvpBasePresenter<SkillsView> implements
 
     @Override
     public void loadSkills() {
-        Log.d("APP", "presenter.loadSkills");
         getView().showLoading(false);
         if (isViewAttached()) {
             getView().setData(model.retrieveInfo());

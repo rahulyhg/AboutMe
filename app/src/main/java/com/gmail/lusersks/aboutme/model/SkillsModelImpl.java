@@ -1,7 +1,5 @@
 package com.gmail.lusersks.aboutme.model;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +11,6 @@ public class SkillsModelImpl implements SkillsModel {
 
     @Override
     public List<Skill> retrieveInfo() {
-        Log.d("APP", "model.retrieveInfo");
         List<Skill> list = new ArrayList<>();
         for (int i = 0; i < SKILLS_COUNT; i++) {
             list.add(new Skill(skill[i], years[i], level[i]));

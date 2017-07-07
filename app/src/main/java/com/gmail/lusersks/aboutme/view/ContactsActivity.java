@@ -11,25 +11,12 @@ import android.view.View;
 import com.gmail.lusersks.aboutme.R;
 import com.gmail.lusersks.aboutme.presenter.Utilities;
 
-public class ContactsActivity extends AppCompatActivity implements View.OnClickListener {
-
-    private void initUI() {
-        (findViewById(R.id.tab_skills)).setOnClickListener(this);
-        (findViewById(R.id.tab_projects)).setOnClickListener(this);
-        (findViewById(R.id.tab_home)).setOnClickListener(this);
-    }
+public class ContactsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts);
-
-        initUI();
-    }
-
-    @Override
-    public void onClick(View v) {
-        Utilities.someAction(v.getId(), this);
     }
 
     @Override
@@ -57,7 +44,7 @@ public class ContactsActivity extends AppCompatActivity implements View.OnClickL
                 uri = Uri.parse("https://facebook.com/romasks");
                 break;
             case R.id.social_in:
-                uri = Uri.parse("https://linkedin.com/romasks");
+                uri = Uri.parse("https://www.linkedin.com/in/raman-skaskevich");
                 break;
         }
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
@@ -65,13 +52,15 @@ public class ContactsActivity extends AppCompatActivity implements View.OnClickL
     }
 
     public void sendSMS(View view) {
-        String message = "My CV\n"
-                + "Raman Skaskevich\n"
-                + "Software Developer and Tester";
+        Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:+48511404949"));
+        intent.putExtra("sms_body", "Hire me");
+        startActivity(intent);
+    }
 
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_TEXT, message);
+    public void sendEmail(View view) {
+        Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:lusersks@gmail.com"));
+        intent.putExtra("subject", "hire me");
+        intent.putExtra("body", "...");
         startActivity(intent);
     }
 }

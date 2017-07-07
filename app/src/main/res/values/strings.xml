@@ -7,14 +7,14 @@
     <string name="tab_settings">SETTINGS</string>
 
     <string name="tab_projects">PROJECTS</string>
-    <string name="projects_activity">Projects Activity</string>
+    <string name="projects_activity">Projects</string>
     <string name="find_me_on_github">Find me on GitHub</string>
 
     <string name="tab_contacts">CONTACTS</string>
-    <string name="find_me_on">Find me on:</string>
     <string name="send_me_mail">Send me mail:</string>
+    <string name="find_me_on">Find me on:</string>
     <string name="my_gmail">lusersks@gmail.com</string>
-    <string name="send_cv_by_sms">Send CV by SMS:</string>
+    <string name="send_cv_by_sms">Send me sms:</string>
     <string name="send">Send</string>
 
     <string name="tab_skills">SKILLS</string>
