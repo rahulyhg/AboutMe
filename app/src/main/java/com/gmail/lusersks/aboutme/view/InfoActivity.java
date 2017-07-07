@@ -30,6 +30,7 @@ public class InfoActivity extends MvpLceViewStateActivity<RecyclerView, List<Str
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRetainInstance(true);
         setContentView(R.layout.activity_info);
         initRecyclerView();
     }

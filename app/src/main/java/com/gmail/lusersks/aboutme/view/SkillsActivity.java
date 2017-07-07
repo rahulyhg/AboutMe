@@ -46,6 +46,7 @@ public class SkillsActivity extends MvpLceViewStateActivity<RecyclerView, List<S
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRetainInstance(true);
         setContentView(R.layout.activity_skills);
 
         initUI();
