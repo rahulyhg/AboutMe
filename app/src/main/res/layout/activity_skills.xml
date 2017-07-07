@@ -7,42 +7,13 @@
     android:orientation="vertical"
     tools:context=".view.SkillsActivity">
 
-    <LinearLayout
-        android:id="@+id/tabs_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/tab_home"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/tab_home"
-            android:textSize="18sp"
-            tools:ignore="ButtonStyle" />
-
-        <Button
-            android:id="@+id/tab_projects"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/tab_projects"
-            android:textSize="18sp"
-            tools:ignore="ButtonStyle" />
-
-        <Button
-            android:id="@+id/tab_contacts"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/tab_contacts"
-            android:textSize="18sp"
-            tools:ignore="ButtonStyle" />
-
-    </LinearLayout>
+    <ProgressBar
+        android:id="@id/loadingView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:indeterminate="false"
+        android:visibility="gone"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -52,9 +23,15 @@
         android:text="@string/skills_activity"
         android:textSize="30sp" />
 
-    <ListView
-        android:id="@+id/list_skills"
+    <android.support.v7.widget.RecyclerView
+        android:id="@id/contentView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@id/errorView"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

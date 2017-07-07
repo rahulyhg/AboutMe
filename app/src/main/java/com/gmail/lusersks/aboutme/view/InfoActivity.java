@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.gmail.lusersks.aboutme.R;
 import com.gmail.lusersks.aboutme.model.InfoModelImpl;
@@ -22,22 +21,23 @@ import com.hannesdorfmann.mosby.mvp.viewstate.lce.data.RetainingLceViewState;
 import java.util.List;
 
 public class InfoActivity extends MvpLceViewStateActivity<RecyclerView, List<String>, InfoView, InfoPresenter>
-        implements InfoView, View.OnClickListener {
+        implements InfoView {
 
+    private static final String UNKNOWN_ERROR_MESSAGE = "Unknown error";
     private RecyclerView recyclerView;
     private InfoAdapter recyclerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_info);
         initRecyclerView();
     }
 
     private void initRecyclerView() {
         recyclerView = (RecyclerView) findViewById(R.id.contentView);
         recyclerAdapter = new InfoAdapter();
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(recyclerAdapter);
@@ -56,11 +56,6 @@ public class InfoActivity extends MvpLceViewStateActivity<RecyclerView, List<Str
     }
 
     @Override
-    public void onClick(View v) {
-        Utilities.someAction(v.getId(), this);
-    }
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
@@ -74,7 +69,7 @@ public class InfoActivity extends MvpLceViewStateActivity<RecyclerView, List<Str
 
     @Override
     public void setData(List<String> data) {
-        recyclerAdapter.addData(data);
+        recyclerAdapter.setData(data);
     }
 
     @Override
@@ -90,11 +85,12 @@ public class InfoActivity extends MvpLceViewStateActivity<RecyclerView, List<Str
 
     @Override
     public List<String> getData() {
-        return null;
+        return recyclerAdapter.getData();
     }
 
     @Override
     protected String getErrorMessage(Throwable e, boolean pullToRefresh) {
-        return null;
+        String errorMessage = e.getMessage();
+        return errorMessage == null ? UNKNOWN_ERROR_MESSAGE : errorMessage;
     }
 }

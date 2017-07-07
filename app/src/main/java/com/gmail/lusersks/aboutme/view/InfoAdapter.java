@@ -41,7 +41,7 @@ class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.InfoViewHolder> {
         return list;
     }
 
-    public void addData(List<String> data) {
+    public void setData(List<String> data) {
         for (String s : data) {
             list.add(s);
         }

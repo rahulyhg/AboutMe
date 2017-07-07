@@ -1,6 +1,6 @@
 package com.gmail.lusersks.aboutme.model;
 
-class Skill {
+public class Skill {
     private String skill;
     private String years;
     private String level;
