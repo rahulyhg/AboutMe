@@ -8,41 +8,69 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.gmail.lusersks.aboutme.R;
 import com.gmail.lusersks.aboutme.model.InfoModelImpl;
+import com.gmail.lusersks.aboutme.model.api.GithubService;
+import com.gmail.lusersks.aboutme.model.entity.GithubUser;
+import com.gmail.lusersks.aboutme.model.image.ImageLoader;
+import com.gmail.lusersks.aboutme.model.image.PicassoImageLoader;
 import com.gmail.lusersks.aboutme.presenter.InfoPresenter;
 import com.gmail.lusersks.aboutme.presenter.InfoPresenterImpl;
 import com.gmail.lusersks.aboutme.presenter.Utilities;
 import com.hannesdorfmann.mosby.mvp.viewstate.lce.LceViewState;
 import com.hannesdorfmann.mosby.mvp.viewstate.lce.MvpLceViewStateActivity;
 import com.hannesdorfmann.mosby.mvp.viewstate.lce.data.RetainingLceViewState;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class InfoActivity extends MvpLceViewStateActivity<RecyclerView, List<String>, InfoView, InfoPresenter>
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+public class InfoActivity extends MvpLceViewStateActivity<LinearLayout, GithubUser, InfoView, InfoPresenter>
         implements InfoView {
 
     private static final String UNKNOWN_ERROR_MESSAGE = "Unknown error";
-    private RecyclerView recyclerView;
-    private InfoAdapter recyclerAdapter;
+    public static final String USER = "romasks";
+
+//    private RecyclerView recyclerView;
+//    private InfoAdapter recyclerAdapter;
+
+    @BindView(R.id.avatar)
+    ImageView avatar;
+
+    @BindView(R.id.username)
+    TextView username;
+
+    @BindView(R.id.userbio)
+    TextView userbio;
+    private ImageLoader<ImageView> imageLoader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
         setContentView(R.layout.activity_info);
-        initRecyclerView();
+        ButterKnife.bind(this);
+//        initRecyclerView();
+        imageLoader = new PicassoImageLoader(Picasso.with(this));
     }
 
-    private void initRecyclerView() {
+    /*private void initRecyclerView() {
         recyclerView = (RecyclerView) findViewById(R.id.contentView);
         recyclerAdapter = new InfoAdapter();
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(recyclerAdapter);
-    }
+    }*/
 
     @Override
     protected void onStop() {
@@ -53,7 +81,12 @@ public class InfoActivity extends MvpLceViewStateActivity<RecyclerView, List<Str
     @NonNull
     @Override
     public InfoPresenter createPresenter() {
-        return new InfoPresenterImpl(new InfoModelImpl());
+        GithubService api = new Retrofit.Builder().baseUrl("https://api.github.com/")
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(GithubService.class);
+        return new InfoPresenterImpl(new InfoModelImpl(USER, api));
     }
 
     @Override
@@ -69,8 +102,13 @@ public class InfoActivity extends MvpLceViewStateActivity<RecyclerView, List<Str
     }
 
     @Override
-    public void setData(List<String> data) {
-        recyclerAdapter.setData(data);
+    public void setData(GithubUser data) {
+//        recyclerAdapter.setData(data);
+        runOnUiThread(() -> {
+            imageLoader.downloadInfio(data.getAvatar(), avatar);
+            username.setText(data.getName());
+            userbio.setText(data.getBio());
+        });
     }
 
     @Override
@@ -80,13 +118,14 @@ public class InfoActivity extends MvpLceViewStateActivity<RecyclerView, List<Str
 
     @NonNull
     @Override
-    public LceViewState<List<String>, InfoView> createViewState() {
+    public LceViewState<GithubUser, InfoView> createViewState() {
         return new RetainingLceViewState<>();
     }
 
     @Override
-    public List<String> getData() {
-        return recyclerAdapter.getData();
+    public GithubUser getData() {
+//        return recyclerAdapter.getData();
+        return new GithubUser();
     }
 
     @Override

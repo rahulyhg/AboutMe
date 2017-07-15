@@ -1,9 +1,9 @@
 package com.gmail.lusersks.aboutme.model;
 
-import java.util.List;
+import com.gmail.lusersks.aboutme.model.entity.GithubUser;
 
 import rx.Observable;
 
 public interface InfoModel {
-    Observable<List<String>> retrieveInfo();
+    Observable<GithubUser> retrieveInfo();
 }

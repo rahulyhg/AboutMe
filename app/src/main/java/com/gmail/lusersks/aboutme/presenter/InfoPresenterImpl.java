@@ -23,6 +23,15 @@ public class InfoPresenterImpl extends MvpBasePresenter<InfoView> implements Inf
     }
 
     @Override
+    public void detachView(boolean retainInstance) {
+        if (!retainInstance && subscription != null && subscription.isUnsubscribed()) {
+            subscription.unsubscribe();
+            subscription = null;
+        }
+        super.detachView(retainInstance);
+    }
+
+    @Override
     public void loadInformation() {
         getView().showLoading(false);
         subscription = model.retrieveInfo().observeOn(AndroidSchedulers.mainThread()).subscribe(data -> {
