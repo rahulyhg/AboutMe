@@ -1,4 +1,4 @@
-package com.gmail.lusersks.aboutme.view;
+package com.gmail.lusersks.aboutme.view.adapters;
 
 
 import android.support.v7.widget.RecyclerView;
@@ -13,10 +13,10 @@ import com.gmail.lusersks.aboutme.model.Skill;
 import java.util.ArrayList;
 import java.util.List;
 
-class SkillsAdapter extends RecyclerView.Adapter<SkillsAdapter.SkillsViewHolder> {
+public class SkillsAdapter extends RecyclerView.Adapter<SkillsAdapter.SkillsViewHolder> {
     private final List<Skill> list;
 
-    SkillsAdapter() {
+    public SkillsAdapter() {
         list = new ArrayList<>();
     }
 

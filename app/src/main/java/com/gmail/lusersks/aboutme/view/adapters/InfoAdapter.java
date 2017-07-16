@@ -1,4 +1,4 @@
-package com.gmail.lusersks.aboutme.view;
+package com.gmail.lusersks.aboutme.view.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,10 +11,10 @@ import com.gmail.lusersks.aboutme.R;
 import java.util.ArrayList;
 import java.util.List;
 
-class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.InfoViewHolder> {
+public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.InfoViewHolder> {
     private final List<String> list;
 
-    InfoAdapter() {
+    public InfoAdapter() {
         list = new ArrayList<>();
     }
 

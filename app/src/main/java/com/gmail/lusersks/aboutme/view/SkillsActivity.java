@@ -7,7 +7,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,6 +21,7 @@ import com.gmail.lusersks.aboutme.model.SkillsModelImpl;
 import com.gmail.lusersks.aboutme.presenter.SkillsPresenter;
 import com.gmail.lusersks.aboutme.presenter.SkillsPresenterImpl;
 import com.gmail.lusersks.aboutme.presenter.Utilities;
+import com.gmail.lusersks.aboutme.view.adapters.SkillsAdapter;
 import com.gmail.lusersks.aboutme.view.dialog.AddNewDialog;
 import com.gmail.lusersks.aboutme.view.dialog.DeleteDialog;
 import com.gmail.lusersks.aboutme.view.dialog.DialogSkillsActionListener;
@@ -40,7 +40,6 @@ public class SkillsActivity extends MvpLceViewStateActivity<RecyclerView, List<S
     private DialogFragment addNewSkillDialog;
     private DialogFragment deleteSkillDialog;
     private DialogFragment editSkillDialog;
-    private RecyclerView recyclerView;
     private SkillsAdapter recyclerAdapter;
 
     @Override
@@ -48,9 +47,8 @@ public class SkillsActivity extends MvpLceViewStateActivity<RecyclerView, List<S
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
         setContentView(R.layout.activity_skills);
-
+        setTitle("Skills");
         initUI();
-
         initRecyclerView();
     }
 
@@ -61,7 +59,7 @@ public class SkillsActivity extends MvpLceViewStateActivity<RecyclerView, List<S
     }
 
     private void initRecyclerView() {
-        recyclerView = (RecyclerView) findViewById(R.id.contentView);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.contentView);
         recyclerAdapter = new SkillsAdapter();
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);

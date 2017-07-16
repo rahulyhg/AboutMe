@@ -1,5 +1,9 @@
-package com.gmail.lusersks.aboutme.view;
+package com.gmail.lusersks.aboutme.view.adapters;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,16 +11,19 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.gmail.lusersks.aboutme.R;
-import com.gmail.lusersks.aboutme.model.Project;
+import com.gmail.lusersks.aboutme.model.entity.Project;
+import com.gmail.lusersks.aboutme.view.ProjectsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapter.ProjectsViewHolder> {
+public class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapter.ProjectsViewHolder> {
     private final List<Project> list;
+    private final Activity activity;
 
-    ProjectsAdapter() {
+    public ProjectsAdapter(Activity activity) {
         list = new ArrayList<>();
+        this.activity = activity;
     }
 
     @Override
@@ -30,9 +37,15 @@ class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapter.ProjectsViewH
     @Override
     public void onBindViewHolder(ProjectsViewHolder holder, int position) {
         Project prj = list.get(position);
-        holder.project.setText(prj.getProject());
-        holder.tag.setText(prj.getTag());
+        holder.name.setText(prj.getName());
         holder.description.setText(prj.getDescription());
+        holder.language.setText(prj.getLanguage());
+
+        holder.cardView.setOnClickListener(v -> {
+            Uri uri = Uri.parse(list.get(position).getUrl());
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            activity.startActivity(intent);
+        });
     }
 
     @Override
@@ -49,13 +62,15 @@ class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapter.ProjectsViewH
     }
 
     class ProjectsViewHolder extends RecyclerView.ViewHolder {
-        TextView project, tag, description;
+        TextView name, description, language;
+        CardView cardView;
 
         ProjectsViewHolder(View view) {
             super(view);
-            project = (TextView) view.findViewById(R.id.tv_project);
-            tag = (TextView) view.findViewById(R.id.tv_tag);
+            cardView = (CardView) view.findViewById(R.id.project_card_view);
+            name = (TextView) view.findViewById(R.id.tv_name);
             description = (TextView) view.findViewById(R.id.tv_description);
+            language = (TextView) view.findViewById(R.id.tv_language);
         }
     }
 }

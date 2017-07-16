@@ -51,6 +51,7 @@ public class InfoActivity extends MvpLceViewStateActivity<LinearLayout, GithubUs
 
     @BindView(R.id.userbio)
     TextView userbio;
+
     private ImageLoader<ImageView> imageLoader;
 
     @Override
@@ -58,6 +59,7 @@ public class InfoActivity extends MvpLceViewStateActivity<LinearLayout, GithubUs
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
         setContentView(R.layout.activity_info);
+        setTitle("AboutMe");
         ButterKnife.bind(this);
 //        initRecyclerView();
         imageLoader = new PicassoImageLoader(Picasso.with(this));
@@ -108,6 +110,8 @@ public class InfoActivity extends MvpLceViewStateActivity<LinearLayout, GithubUs
             imageLoader.downloadInfio(data.getAvatar(), avatar);
             username.setText(data.getName());
             userbio.setText(data.getBio());
+
+            Utilities.reposCount = Integer.parseInt(data.getRepos());
         });
     }
 

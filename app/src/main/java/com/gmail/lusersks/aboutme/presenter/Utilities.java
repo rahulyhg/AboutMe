@@ -1,5 +1,6 @@
 package com.gmail.lusersks.aboutme.presenter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
@@ -11,6 +12,8 @@ import com.gmail.lusersks.aboutme.R;
 import com.gmail.lusersks.aboutme.view.SkillsActivity;
 
 public class Utilities {
+
+    public static int reposCount;
 
     public static void someAction(int id, Context activity) {
         Class activityClass;
