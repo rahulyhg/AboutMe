@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion 26
@@ -45,10 +44,10 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 
     //annotation
-    compile 'com.android.support:support-annotations:25.3.1'
+    compile 'com.android.support:support-annotations:27.0.2'
 
     //gson
-    compile 'com.google.code.gson:gson:2.7'
+    compile 'com.google.code.gson:gson:2.8.0'
 
     //retrofit
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
